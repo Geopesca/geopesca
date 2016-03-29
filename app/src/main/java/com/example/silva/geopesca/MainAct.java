@@ -81,9 +81,9 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
         EditText mProx;
         int tam;
 
-        public myTextWatcher( EditText p, int n) {
+        public myTextWatcher( EditText p, int tamanho) {
             mProx = p;
-            tam = n;
+            tam = tamanho;
         }
 
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -196,8 +196,8 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
     //lembrar de tratar o numero negativo
     public void DecimalToGMS(Double valor, String x) {
         //valor negativo para positivo
-        if (valor < 0) ;
-        valor = valor * -1;
+        if (valor < 0)
+            valor = valor * -1;
 
         // graus
         int graus = valor.intValue();
