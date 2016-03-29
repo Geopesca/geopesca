@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GeoPesca - Pesca Sustentável</string>
+    <string name="lbl_latitude">Latitude (S)</string>
+    <string name="lbl_longitude">Longitude (W)</string>
+    <string name="lbl_btnPesquisa">Pesquisa</string>
+    <string name="lbl_btnLocal">Onde estou ?</string>
+    <string name="lbl_segundos">\"</string>
+    <string name="lbl_minutos">\'</string>
+    <string name="lbl_graus">º</string>
+    <string name="lbl_resumo">APLICATIVO MOBILE E OFFLINE PARA IDENTIFICAR OS LOCAIS
+                              PROIBIDOS PARA A PESCA NO LITORAL NORTE DO ESTADO DE
+                              SP</string>
+    <string name="lbl_autores">José Maria da Silva e Rodrigo Maia Costa</string>
+    <string name="lbl_imagem">0</string>
+    <string name="title_activity_result">Resultado da Pesquisa</string>
+    <string name="title_activity_act_result">Resultado</string>
+    <string name="lblPrecisao">Precisão de 00 metros</string>
+    <string name="title_activity_act_historico">act_historico</string>
+</resources>

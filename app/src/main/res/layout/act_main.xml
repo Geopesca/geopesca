@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="@string/lbl_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtLongitude"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:touchscreenBlocksFocus="false"
+        android:gravity="center_vertical"
+        android:background="#9ef553"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/edtLngG"
+            android:background="@drawable/style_redondo"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLength="2"
+            android:digits="456"
+            android:layout_weight="3"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:inputType="number"
+            android:hint="45"
+            android:imeOptions="actionNext" />
+
+        <TextView
+            android:id="@+id/txtLngG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lbl_graus"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/edtLngM"
+            android:background="@drawable/style_redondo"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLength="2"
+            android:layout_weight="3"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:inputType="number"
+            android:layout_gravity="center_vertical"
+            android:hint="02"
+            android:imeOptions="actionNext"/>
+
+        <TextView
+            android:id="@+id/txtLngM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_minutos"
+            android:layout_weight="1"
+            android:textSize="40dp" />
+
+        <EditText
+            android:id="@+id/edtLngS"
+            android:background="@drawable/style_redondo"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_weight="5"
+            android:maxLength="5"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:layout_gravity="center_vertical"
+            android:hint="18.58"
+            android:imeOptions="actionNext"/>
+
+        <TextView
+            android:id="@+id/txtLngS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_segundos"
+            android:layout_weight="3"
+            android:textSize="40dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lbl_latitude"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:touchscreenBlocksFocus="false"
+        android:baselineAligned="true"
+        android:foregroundTint="@color/abc_color_highlight_material"
+        android:gravity="center_vertical"
+        android:background="#9ef553"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/edtLatG"
+            android:background="@drawable/style_redondo"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLength="2"
+            android:digits="1234567890"
+            android:layout_weight="3"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:inputType="number"
+            android:hint="23"
+            android:imeOptions="actionNext"/>
+
+        <TextView
+            android:id="@+id/txtLatG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lbl_graus"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:id="@+id/edtLatM"
+            android:background="@drawable/style_redondo"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLength="2"
+            android:layout_weight="3"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:inputType="number"
+            android:layout_gravity="center_vertical"
+            android:hint="32"
+            android:imeOptions="actionNext"/>
+
+        <TextView
+            android:id="@+id/txtLatM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_minutos"
+            android:layout_weight="1"
+            android:layout_gravity="top"
+            android:textSize="40dp"/>
+
+        <EditText
+            android:id="@+id/edtLatS"
+            android:background="@drawable/style_redondo"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_weight="5"
+            android:maxLength="5"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="9dp"
+            android:layout_gravity="center_vertical"
+            android:hint="40.25"
+            android:imeOptions="actionDone"/>
+
+        <TextView
+            android:id="@+id/txtLatS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_segundos"
+            android:layout_weight="3"
+            android:layout_gravity="top"
+            android:textSize="40dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtMsg"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/lblPrecisao" />
+
+    <Button
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_btnPesquisa"
+        android:id="@+id/btnPesquisa"
+        android:minHeight="60dp"
+        android:background="#779dde"
+        android:layout_marginTop="4dp"
+        android:textSize="26dp"
+        android:textColor="#fcfbfb"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_btnLocal"
+        android:id="@+id/btnOndeEstou"
+        android:layout_marginTop="10dp"
+        android:background="#8bb6d0"
+        android:textSize="18dp"
+        android:textColor="#fcfafa"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:id="@+id/imgLogo"
+        android:longClickable="true"
+        android:src="@drawable/ifsp"
+        android:contentDescription="@string/lbl_imagem"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#9ef553"
+        android:weightSum="1"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_resumo"
+            android:id="@+id/txtResumo"
+            android:textColor="@color/material_blue_grey_800"
+            android:textIsSelectable="false"
+            android:textSize="9dp"
+            android:textStyle="bold|italic"
+            android:background="@drawable/style_redondo"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.32"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="20dp" />
+    </LinearLayout>
+
+</LinearLayout>
