@@ -1,6 +1,7 @@
 package com.example.silva.geopesca;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -8,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.silva.geopesca.DataBase.DataBase;
@@ -17,8 +19,6 @@ import com.example.silva.geopesca.GlobalAPP.MsgBox;
 
 import java.io.IOException;
 import java.util.Locale;
-
-
 
 
 public class MainAct extends AppCompatActivity implements View.OnClickListener {
@@ -34,6 +34,8 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
     private EditText edtLatS;
 
     private TextView txtMsg;
+    private ImageView imgLogo;
+    private AnimationDrawable animation;
 
     private Button btnPesquisa;
     private Button btnOndeEstou;
@@ -41,11 +43,14 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
     private int tam;
     private EditText nextGet;
 
+    //private Timer timerAtual = new Timer();
+    //private TimerTask task;
+    //private final Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
-
         //recupera longitude
         edtLngG = (EditText) findViewById(R.id.edtLngG);
         edtLngM = (EditText) findViewById(R.id.edtLngM);
@@ -56,7 +61,20 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
         edtLatM = (EditText) findViewById(R.id.edtLatM);
         edtLatS = (EditText) findViewById(R.id.edtLatS);
 
+        //titulo do tcc
         txtMsg = (TextView) findViewById(R.id.txtMsg);
+
+        //imagens e logo
+        imgLogo = (ImageView) findViewById(R.id.animacao);
+        imgLogo.setBackgroundResource(R.drawable.animacao);
+        animation = (AnimationDrawable) imgLogo.getBackground();
+        animation.start();
+        imgLogo.setOnClickListener(this);
+
+        //Animation deslocamento = new TranslateAnimation(0, 1000, 0, 0);
+        //deslocamento.setDuration(3000);
+        //imgLogo.startAnimation(deslocamento);
+
 
         btnPesquisa = (Button) findViewById(R.id.btnPesquisa);
         btnOndeEstou = (Button) findViewById(R.id.btnOndeEstou);
@@ -101,6 +119,17 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
 
     //evento principal esta ligado ao implements...duas formas de fazer
     public void onClick(View v) {
+        if (v == imgLogo) {
+            if (!animation.isRunning())
+                animation.start();
+            else{
+                animation.stop();
+                MsgBox.Alert(this,animation.getCurrent().toString());
+            }
+
+            return;
+        }
+
         if (v == btnPesquisa) {
             String x1 = edtLngG.getText().toString();
             String x2 = edtLngM.getText().toString();
@@ -220,5 +249,4 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
             edtLatS.setText(String.format(Locale.US, "%.2f", segundos));
         }
     }
-
 }

@@ -221,13 +221,11 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="290dp"
         android:layout_height="110dp"
-        android:id="@+id/imgLogo"
-        android:longClickable="true"
-        android:src="@drawable/ifsp"
-        android:contentDescription="@string/lbl_imagem"
-        android:layout_marginTop="10dp" />
+        android:id="@+id/animacao"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:orientation="horizontal"
