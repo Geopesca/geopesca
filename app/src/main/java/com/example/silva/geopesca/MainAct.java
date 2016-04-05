@@ -124,7 +124,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                 animation.start();
             else{
                 animation.stop();
-                MsgBox.Alert(this,animation.getCurrent().toString());
+                //MsgBox.Alert(this,animation.getCurrent().toString());
             }
 
             return;
@@ -192,7 +192,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                     it.putExtra("LATITUDE", String.format("%.6f", latdec));
                     startActivity(it);
                 } else {
-                    MsgBox.ToolTip(this,"Este local está fora dos limites do TCC.");
+                    MsgBox.ToolTip(this,"Este local está fora dos limites mapeado.");
                 }
             }else {
                 MsgBox.ToolTip(this,"Campos vazios, click no botão Onde Estou?");
