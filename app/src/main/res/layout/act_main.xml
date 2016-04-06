@@ -194,7 +194,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/txtMsg"
         android:layout_gravity="center_horizontal"
-        android:text="@string/lblPrecisao" />
+        android:text="@string/lbl_precisao" />
 
     <Button
         android:layout_width="290dp"

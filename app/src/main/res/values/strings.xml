@@ -11,8 +11,14 @@
                               PROIBIDOS PARA A PESCA NO LITORAL NORTE DO ESTADO DE
                               SP</string>
     <string name="lbl_autores">José Maria da Silva e Rodrigo Maia Costa</string>
-    <string name="title_activity_result">Resultado da Pesquisa</string>
-    <string name="title_activity_act_result">Resultado</string>
-    <string name="lblPrecisao">Precisão de 00 metros</string>
-    <string name="title_activity_act_historico">act_historico</string>
+
+    <string name="lbl_precisao">Precisão de 00 metros</string>
+
+    <string name="lbl_msg_campos_vazios">Campos vazios, click no botão Onde Estou?</string>
+    <string name="lbl_msg_limites_mapeados">Este local está fora dos limites mapeados.</string>
+    <string name="lbl_msg_erro_coordenadas">Atenção, coordenadas inválidas.</string>
+    <string name="lbl_msg_erro_bancodados">Problemas com banco de dados.</string>
+    <string name="lbl_msg_erro_satelites">Aguarde localizando os satélites.</string>
+
+    <string name="lbl_msg_resultado">Não consta proibição ou restrição para pesca no local pesquisado.</string>
 </resources>

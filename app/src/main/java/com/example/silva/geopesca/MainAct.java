@@ -24,6 +24,9 @@ import java.util.Locale;
 public class MainAct extends AppCompatActivity implements View.OnClickListener {
     private static final int CH_ID_LIMITE_TCC = 33;
     private static final String CH_LIMITE_PLG = "1";
+    private static final String CH_LONGITUDE ="LONGITUDE";
+    private static final String CH_LATITUDE ="LATITUDE";
+
 
     private EditText edtLngG;
     private EditText edtLngM;
@@ -138,18 +141,19 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
             String y2 = edtLatM.getText().toString();
             String y3 = edtLatS.getText().toString();
 
-            /* Exemplo legal
+            /*
+            Exemplo legal
             File dataBase = getApplicationContext().getDatabasePath(DataBase.DB_NAME);
             if (!dataBase.exists()){
                 MsgBox.Alert(this, "Problemas com banco de dados. 1");
             }
+
+            DataBase.appPath(this);
+
+            if(DataBase.isFile()) {
+                MsgBox.Alert(this, "O arquivo está OK.");
+            }
             */
-
-            //DataBase.appPath(this);
-
-            //if(DataBase.isFile()) {
-            //    MsgBox.Alert(this, "O arquivo está OK.");
-            //}
 
             if(!DataBase.isFile()) {
                 try {
@@ -160,7 +164,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
             }
 
             if(!DataBase.isFile()) {
-                MsgBox.Alert(this, "Problemas com banco de dados.");
+                MsgBox.Alert(this, getString(R.string.lbl_msg_erro_bancodados));
                 return;
             }
 
@@ -185,17 +189,17 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                 }
 
                 if (lcheck){
-                    MsgBox.ToolTip(this, "Atenção, coordenadas inválidas.");
+                    MsgBox.ToolTip(this, getString(R.string.lbl_msg_erro_coordenadas));
                 }else if (RepositorioDados.testarPolygon(paths, latdec, longdec)) {
                     Intent it = new Intent(this, ActResult.class);
-                    it.putExtra("LONGITUDE", String.format("%.6f", longdec));
-                    it.putExtra("LATITUDE", String.format("%.6f", latdec));
+                    it.putExtra(CH_LONGITUDE, String.format("%.6f", longdec));
+                    it.putExtra(CH_LATITUDE, String.format("%.6f", latdec));
                     startActivity(it);
                 } else {
-                    MsgBox.ToolTip(this,"Este local está fora dos limites mapeado.");
+                    MsgBox.ToolTip(this,getString(R.string.lbl_msg_limites_mapeados));
                 }
             }else {
-                MsgBox.ToolTip(this,"Campos vazios, click no botão Onde Estou?");
+                MsgBox.ToolTip(this,getString(R.string.lbl_msg_campos_vazios));
             }
         } else {
             // create class object
@@ -208,17 +212,16 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                 double precisao = gps.getPrecisao();
 
                 if (latitude != 0.0 && longitude != 0.0) {
-                    DecimalToGMS(latitude, "LAT");  // Latitude coletada
-                    DecimalToGMS(longitude, "LNG"); // Longitude coletada
-                    txtMsg.setText("Precisão de " + precisao + " metros");
+                    DecimalToGMS(latitude, CH_LATITUDE);  // Latitude coletada
+                    DecimalToGMS(longitude, CH_LONGITUDE); // Longitude coletada
+                    txtMsg.setText(getString(R.string.lbl_precisao).replace("00"," "+precisao+""));
                     gps.stopUsingGPS();
                 } else {
-                    MsgBox.ToolTip(this, "Aguarde localizando os satélites.");
+                    MsgBox.ToolTip(this, getString(R.string.lbl_msg_erro_satelites));
                 }
             } else {
                 gps.showSettingsAlert();
             }
-
         }
     }
 
@@ -239,7 +242,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
         double segundos = (aux - minutos) * 60;
 
         //System.out.println(""+graus+"º "+minutos+"' "+segundos+'"');
-        if (x.contentEquals("LNG")) {
+        if (x.contentEquals(CH_LONGITUDE)) {
             edtLngG.setText("" + graus);
             edtLngM.setText("" + minutos);
             edtLngS.setText(String.format(Locale.US, "%.2f", segundos));

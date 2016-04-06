@@ -11,6 +11,8 @@ import com.example.silva.geopesca.Dominio.RepositorioDados;
 import com.example.silva.geopesca.GlobalAPP.MsgBox;
 
 public class ActResult extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    private static final String CH_LONGITUDE ="LONGITUDE";
+    private static final String CH_LATITUDE ="LATITUDE";
     private EditText edtResult;
 
     private ArrayAdapter<String> adpGeodados;
@@ -29,9 +31,9 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
         //para testar os parametros do intent
         Bundle bundle = getIntent().getExtras();
 
-        if (bundle.containsKey("LONGITUDE")) {
-            String longitude = bundle.getString("LONGITUDE");
-            String latitude = bundle.getString("LATITUDE");
+        if (bundle.containsKey(CH_LONGITUDE)) {
+            String longitude = bundle.getString(CH_LONGITUDE);
+            String latitude = bundle.getString(CH_LATITUDE);
             longitude = longitude.replaceAll(",", ".");
             latitude = latitude.replaceAll(",", ".");
 
@@ -50,10 +52,10 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
                 } else {
                     //MsgBox.Alert(this, "Não consta proibição ou restrição para pesca no local pesquisado.");
                     TextView resumo = (TextView) findViewById(R.id.txtResult);
-                    resumo.setText("Não consta proibição ou restrição para pesca no local pesquisado.");
+                    resumo.setText(getString(R.string.lbl_msg_resultado));
                 }
             } catch (SQLException er) {
-                MsgBox.Alert(this, "Erro ao abrir o banco de dados. Erro: " + er.getMessage());
+                MsgBox.Alert(this, getString(R.string.lbl_msg_erro_bancodados)); // + er.getMessage());
                 //this.finish(); //finaliza a active result
             }
         }
