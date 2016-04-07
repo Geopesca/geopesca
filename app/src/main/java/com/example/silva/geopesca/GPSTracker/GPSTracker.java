@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 
+import com.example.silva.geopesca.R;
+
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
@@ -114,13 +116,13 @@ public class GPSTracker extends Service implements LocationListener {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
         // Setting Dialog Title
-        alertDialog.setTitle("Configuração do GPS");
+        alertDialog.setTitle(getText(R.string.lbl_title_gps));
 
         // Setting Dialog Message
-        alertDialog.setMessage("GPS não está habilitado. Para habilitá-lo utilize o botão configuração?");
+        alertDialog.setMessage(getString(R.string.lbl_dialog_gps));
 
         // On pressing Settings button
-        alertDialog.setPositiveButton("Configuração", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(getString(R.string.lbl_config_gps), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
@@ -128,7 +130,7 @@ public class GPSTracker extends Service implements LocationListener {
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.lbl_btn_cancelar), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }

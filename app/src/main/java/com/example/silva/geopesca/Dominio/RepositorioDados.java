@@ -44,7 +44,6 @@ public class RepositorioDados {
         }
     } */
 
-
     public ArrayAdapter<String> buscaGeodados(Context context, double lat, double lng) {
         ArrayAdapter<String> adpGeodados = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
         Cursor cursor = conn.query("geodados", null, null, null, null, null, null);

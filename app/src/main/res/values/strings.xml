@@ -21,4 +21,9 @@
     <string name="lbl_msg_erro_satelites">Aguarde localizando os satélites.</string>
 
     <string name="lbl_msg_resultado">Não consta proibição ou restrição para pesca no local pesquisado.</string>
+
+    <string name="lbl_title_gps">Configuração do GPS</string>
+    <string name="lbl_dialog_gps">GPS não está habilitado. Para habilitá-lo utilize o botão configuração ?</string>
+    <string name="lbl_config_gps">Configuração</string>
+    <string name="lbl_btn_cancelar">Cancelar</string>
 </resources>
