@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +23,7 @@ import com.example.silva.geopesca.GlobalAPP.MsgBox;
 import java.io.IOException;
 import java.util.Locale;
 
-
+//AppCompatActivity
 public class MainAct extends AppCompatActivity implements View.OnClickListener {
     private static final int CH_ID_LIMITE_TCC = 33;
     private static final String CH_LIMITE_PLG = "1";
@@ -66,6 +69,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
 
         //titulo do tcc
         txtMsg = (TextView) findViewById(R.id.txtMsg);
+        txtMsg.setText(String.format(getString(R.string.lbl_precisao),0.0));
 
         //imagens e logo
         imgLogo = (ImageView) findViewById(R.id.animacao);
@@ -77,7 +81,6 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
         //Animation deslocamento = new TranslateAnimation(0, 1000, 0, 0);
         //deslocamento.setDuration(3000);
         //imgLogo.startAnimation(deslocamento);
-
 
         btnPesquisa = (Button) findViewById(R.id.btnPesquisa);
         btnOndeEstou = (Button) findViewById(R.id.btnOndeEstou);
@@ -94,7 +97,6 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
 
         //rotinas de teste
         //DataBase.excluir_files(); //deleta todos os arquivos database
-
         //DataBase.exibe_files(this);
     }
 
@@ -127,9 +129,7 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                 animation.start();
             else{
                 animation.stop();
-                //MsgBox.Alert(this,animation.getCurrent().toString());
             }
-
             return;
         }
 
@@ -214,7 +214,8 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
                 if (latitude != 0.0 && longitude != 0.0) {
                     DecimalToGMS(latitude, CH_LATITUDE);  // Latitude coletada
                     DecimalToGMS(longitude, CH_LONGITUDE); // Longitude coletada
-                    txtMsg.setText(getString(R.string.lbl_precisao).replace("00"," "+precisao+""));
+                    txtMsg.setText(String.format(getString(R.string.lbl_precisao),precisao));
+
                     gps.stopUsingGPS();
                 } else {
                     MsgBox.ToolTip(this, getString(R.string.lbl_msg_erro_satelites));
@@ -251,5 +252,28 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
             edtLatM.setText("" + minutos);
             edtLatS.setText(String.format(Locale.US, "%.2f", segundos));
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_act_geopesca, menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.mnu_sobre:
+                MsgBox.Sobre(this);
+                break;
+            case R.id.mnu_contato:
+                MsgBox.Contatos(this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

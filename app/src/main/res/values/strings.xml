@@ -12,7 +12,7 @@
                               SP</string>
     <string name="lbl_autores">José Maria da Silva e Rodrigo Maia Costa</string>
 
-    <string name="lbl_precisao">Precisão de 00 metros</string>
+    <string name="lbl_precisao">Precisão de %S metros</string>
 
     <string name="lbl_msg_campos_vazios">Campos vazios, click no botão Onde Estou?</string>
     <string name="lbl_msg_limites_mapeados">Este local está fora dos limites mapeados.</string>
@@ -26,4 +26,8 @@
     <string name="lbl_dialog_gps">GPS não está habilitado. Para habilitá-lo utilize o botão configuração ?</string>
     <string name="lbl_config_gps">Configuração</string>
     <string name="lbl_btn_cancelar">Cancelar</string>
+
+    <string name="lbl_mnu_sobre">Sobre</string>
+    <string name="lbl_mnu_contato">Contato</string>
+
 </resources>
