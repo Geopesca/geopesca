@@ -125,10 +125,11 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
     //evento principal esta ligado ao implements...duas formas de fazer
     public void onClick(View v) {
         if (v == imgLogo) {
-            if (!animation.isRunning())
+            if (!animation.isRunning()) {
                 animation.start();
-            else{
-                animation.stop();
+            }else{
+                //animation.stop();
+                MsgBox.MsgImage(this,animation);
             }
             return;
         }
@@ -254,13 +255,12 @@ public class MainAct extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    //menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_act_geopesca, menu);
-
         return super.onCreateOptionsMenu(menu);
-
     }
 
     @Override

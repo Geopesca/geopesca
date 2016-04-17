@@ -16,7 +16,7 @@ import com.example.silva.geopesca.R;
 
 public class GPSTracker extends Service implements LocationListener {
 
-    private final Context mContext;
+    private final Context context;
 
     // flag for GPS status
     boolean isGPSEnabled = false;
@@ -39,14 +39,14 @@ public class GPSTracker extends Service implements LocationListener {
     protected LocationManager locationManager;
 
     public GPSTracker(Context context) {
-        this.mContext = context;
+        this.context = context;
         getLocation();
     }
 
     //localização
     public Location getLocation() {
         try {
-            locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
+            locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
             // Obtém status GPS
             isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
@@ -113,24 +113,29 @@ public class GPSTracker extends Service implements LocationListener {
 
     /* Alerta para Ativar GPS */
     public void showSettingsAlert(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-        // Setting Dialog Title
-        alertDialog.setTitle(getText(R.string.lbl_title_gps));
+        //Setting Dialog Title
+        String title = context.getResources().getString(R.string.lbl_title_gps);
+        alertDialog.setTitle(title.toString());
+        //alertDialog.setTitle("Configuração do GPS");
 
-        // Setting Dialog Message
-        alertDialog.setMessage(getString(R.string.lbl_dialog_gps));
+        //Setting Dialog Message
+        String message = context.getResources().getString(R.string.lbl_dialog_gps);
+        alertDialog.setMessage(message);
 
         // On pressing Settings button
-        alertDialog.setPositiveButton(getString(R.string.lbl_config_gps), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
+        String btnConfig = context.getResources().getString(R.string.lbl_btn_config);
+        alertDialog.setPositiveButton(btnConfig.toString(), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
+                context.startActivity(intent);
             }
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton(getString(R.string.lbl_btn_cancelar), new DialogInterface.OnClickListener() {
+        String btnCancelar = context.getResources().getString(R.string.lbl_btn_cancelar);
+        alertDialog.setNegativeButton(btnCancelar.toString(), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }

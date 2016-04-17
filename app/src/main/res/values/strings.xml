@@ -24,7 +24,7 @@
 
     <string name="lbl_title_gps">Configuração do GPS</string>
     <string name="lbl_dialog_gps">GPS não está habilitado. Para habilitá-lo utilize o botão configuração ?</string>
-    <string name="lbl_config_gps">Configuração</string>
+    <string name="lbl_btn_config">Configuração</string>
     <string name="lbl_btn_cancelar">Cancelar</string>
 
     <string name="lbl_mnu_sobre">Sobre</string>
