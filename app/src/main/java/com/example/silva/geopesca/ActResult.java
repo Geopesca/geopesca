@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.silva.geopesca.Dominio.RepositorioDados;
 import com.example.silva.geopesca.GlobalAPP.MsgBox;
+import com.example.silva.geopesca.GlobalAPP.Progress;
 
 public class ActResult extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private static final String CH_LONGITUDE ="LONGITUDE";
@@ -18,6 +23,7 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
     private ArrayAdapter<String> adpGeodados;
     private ListView lstDados;
     private RepositorioDados repDados;
+    private Progress progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,8 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
             longitude = longitude.replaceAll(",", ".");
             latitude = latitude.replaceAll(",", ".");
 
+            progress = new Progress(this); //inicio barra deprogresso
+
             try {
                 double lat = Double.parseDouble(latitude);
                 double lng = Double.parseDouble(longitude);
@@ -49,6 +57,7 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
                     exibeHistorico(0); //zero é o primeiro registro
                     lstDados.setAdapter(adpGeodados);
                     lstDados.setOnItemClickListener(this);
+
                 } else {
                     //MsgBox.Alert(this, "Não consta proibição ou restrição para pesca no local pesquisado.");
                     TextView resumo = (TextView) findViewById(R.id.txtResult);
@@ -57,6 +66,9 @@ public class ActResult extends AppCompatActivity implements AdapterView.OnItemCl
             } catch (SQLException er) {
                 MsgBox.Alert(this, getString(R.string.lbl_msg_erro_bancodados)); // + er.getMessage());
                 //this.finish(); //finaliza a active result
+            }
+            finally {
+                 progress.Close();
             }
         }
     }
